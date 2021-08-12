@@ -5,7 +5,8 @@
     @foreach ($brand_name as $name => $bra_name)
     <h2 class="title text-center">{{$bra_name->brand_name}}</h2>
     @endforeach
-    @foreach ( $brand_by_id as $key => $pro )
+    @foreach ( $brand_by_id as $key => $pro ) 
+    <a href="{{URL::to('/chi-tiet-san-pham/'.$pro->product_id)}}">
     <div class="col-sm-4">
         <div class="product-image-wrapper">
             <div class="single-products">
@@ -23,14 +24,9 @@
                     </div>
                 </div>
             </div>
-            <div class="choose">
-                <ul class="nav nav-pills nav-justified">
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Thêm yêu thích</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Thêm so sánh</a></li>
-                </ul>
-            </div>
         </div>
     </div>
+    </a>
     @endforeach
 </div>
 <!--features_items-->

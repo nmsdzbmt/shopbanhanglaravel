@@ -9,6 +9,9 @@ Route::get('/trangchu', 'HomeController@index');
 Route::get('/danh-muc-san-pham/{category_id}', 'CategoryProduct@show_category');
 //Thuong hieu san pham trang chu
 Route::get('/thuong-hieu-san-pham/{brand_id}', 'BrandProduct@show_brand');
+//chi tiet san pham
+Route::get('/chi-tiet-san-pham/{product_id}', 'ProductController@detail_product');
+
 
 //backend
 Route::get('/admin', 'AdminController@index');
