@@ -57,3 +57,12 @@ Route::get('/delete-product/{product_id}', 'ProductController@delete_product');
 
 Route::get('/unactive-product/{product_id}', 'ProductController@unactive_product');
 Route::get('/active-product/{product_id}', 'ProductController@active_product');
+
+// Cart
+Route::post('/save-cart', 'CartController@save_cart');//add cart
+Route::post('/update-cart-quantity', 'CartController@update_cart_quantity');//update quantity
+Route::get('/show-cart', 'CartController@show_cart');
+Route::get('/delete-to-cart/{rowId}', 'CartController@delete_to_cart');//delete product with cart
+
+//Checkout
+Route::get('/login-checkout', 'CheckoutController@login_checkout');
