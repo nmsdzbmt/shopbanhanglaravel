@@ -5,7 +5,7 @@
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li><a href="{{ URL::to('/') }}">Trang chủ</a></li>
-                    <li class="active">Shopping Cart</li>
+                    <li class="active">Giỏ hàng của bạn</li>
                 </ol>
             </div>
             <div class="table-responsive cart_info">
@@ -70,65 +70,7 @@
     <!--/#cart_items-->
     <section id="do_action">
         <div class="container">
-            {{-- <div class="heading">
-                <h3>Bạn nên làm gì tiếp theo?</h3>
-                <p>Chọn xem bạn có mã giảm giá hoặc điểm thưởng muốn sử dụng hoặc muốn ước tính chi phí giao hàng của mình.</p>
-            </div> --}}
             <div class="row">
-                {{-- <div class="col-sm-6">
-                    <div class="chose_area">
-                        <ul class="user_option">
-                            <li>
-                                <input type="checkbox">
-                                <label>Sử dụng phiếu giảm giá</label>
-                            </li>
-                            <li>
-                                <input type="checkbox">
-                                <label>Sử dụng mã quà tặng</label>
-                            </li>
-                            <li>
-                                <input type="checkbox">
-                                <label>Ước tính hàng & Thuế</label>
-                            </li>
-                        </ul>
-                        <ul class="user_info">
-                            <li class="single_field">
-                                <label>Quốc gia:</label>
-                                <select>
-                                    <option>United States</option>
-                                    <option>Bangladesh</option>
-                                    <option>UK</option>
-                                    <option>India</option>
-                                    <option>Pakistan</option>
-                                    <option>Ucrane</option>
-                                    <option>Canada</option>
-                                    <option>Dubai</option>
-                                </select>
-
-                            </li>
-                            <li class="single_field">
-                                <label>Tỉnh/Thành phố:</label>
-                                <select>
-                                    <option>Select</option>
-                                    <option>Dhaka</option>
-                                    <option>London</option>
-                                    <option>Dillih</option>
-                                    <option>Lahore</option>
-                                    <option>Alaska</option>
-                                    <option>Canada</option>
-                                    <option>Dubai</option>
-                                </select>
-
-                            </li>
-                            <li class="single_field zip-field">
-                                <label>Mã Zip:</label>
-                                <input type="text">
-                            </li>
-                        </ul>
-                        <a class="btn btn-default update" href="">Get Quotes</a>
-                        <a class="btn btn-default check_out" href="">Continue</a>
-                    </div>
-                </div> --}}
                 <div class="col-sm-6">
                     <div class="total_area">
                         <ul>
@@ -137,7 +79,18 @@
                             <li>Phí vận chuyển <span>Free</span></li>
                             <li>Thành tiền <span>{{ Cart::total() . ' ' . 'VND' }}</span></li>
                         </ul>
-                        <a class="btn btn-default check_out" href="{{URL::to('/login-checkout')}}">Thanh Toán</a>
+                        <?php
+                            $customer_id = Session::get('customer_id');
+                            if($customer_id != NULL){
+                        ?>
+                        <a class="btn btn-default check_out" href="{{ URL::to('/checkout') }}"><i class="fa fa-crosshairs"></i> Thanh toán</a>
+                        <?php
+                            }else{
+                        ?>
+                        <a class="btn btn-default check_out" href="{{ URL::to('/login-checkout') }}"><i class="fa fa-lock"></i>Thanh Toán</a>
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

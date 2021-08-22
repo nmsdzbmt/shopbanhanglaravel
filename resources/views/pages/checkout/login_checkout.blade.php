@@ -6,7 +6,8 @@
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form"><!--login form-->
                     <h2>Đăng nhập tài khoản</h2>
-                    <form action="#">
+                    <form action="{{URL::to('/login-customer')}}" method="post">
+                        {{ csrf_field() }}
                         <input type="email" name="email_account" placeholder="Account or Email" />
                         <input type="password" name="password_account" placeholder="Password" />
                         <span>
@@ -23,10 +24,12 @@
             <div class="col-sm-4">
                 <div class="signup-form"><!--sign up form-->
                     <h2>Đăng kí người dùng</h2>
-                    <form action="#">
-                        <input type="text" placeholder="Tên hiển thị"/>
-                        <input type="email" placeholder="Account or Email"/>
-                        <input type="password" placeholder="Password"/>
+                    <form action="{{URL::to('/add-customer')}}" method="post">
+                        {{ csrf_field() }}
+                        <input type="text" name="customer_name" placeholder="Tên hiển thị"/>
+                        <input type="email" name="customer_email" placeholder="Account or Email"/>
+                        <input type="password" name="customer_password" placeholder="Password"/>
+                        <input type="text" name="customer_phone" placeholder="Số điện thoại"/>
                         <button type="submit" class="btn btn-default">Đăng kí</button>
                     </form>
                 </div><!--/sign up form-->
