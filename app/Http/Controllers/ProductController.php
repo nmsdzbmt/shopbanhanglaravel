@@ -156,4 +156,17 @@ class ProductController extends Controller
 
         return view('pages.product.show_detail_product')->with('category',$category_product)->with('brand',$brand_product)->with('detail_product',$detail_product)->with('related_product',$related_product);
     }
+
+    //Search
+    public function search_product(Request $request)
+    {
+        $category_product = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id', 'desc')->get();
+        $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderby('brand_id', 'desc')->get();
+
+        $keywords = $request->keywords_submit;
+        $search_product = DB::table('tbl_product')->where('product_name','like','%'.$keywords.'%')->get();
+
+        return view('pages.product.search_product')->with('category',$category_product)->with('brand',$brand_product)->with('search_product',$search_product);
+    }
+
 }
