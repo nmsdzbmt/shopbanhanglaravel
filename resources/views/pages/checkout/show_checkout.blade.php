@@ -22,10 +22,10 @@
                             <div class="form-one">
                                 <form action="{{ URL::to('/save-checkout-customer') }}" method="post">
                                     {{ csrf_field() }}
-                                    <input type="text" name="shipping_name" placeholder="Họ và tên">
-                                    <input type="text" placeholder="Email" name="shipping_email">
-                                    <input type="text" placeholder="Địa chỉ" name="shipping_address">
-                                    <input type="text" placeholder="Số điện thoại" name="shipping_phone">
+                                    <input type="text" name="shipping_name" placeholder="Họ và tên" required="">
+                                    <input type="text" placeholder="Email" name="shipping_email" required="">
+                                    <input type="text" placeholder="Địa chỉ" name="shipping_address" required="">
+                                    <input type="text" placeholder="Số điện thoại" name="shipping_phone" required="">
                                     <textarea name="shipping_note" placeholder="Ghi chú đơn hàng của bạn!" rows="6"></textarea>
                                     <input type="submit" value="Gửi"
                                         style="background-color: #FE980F; color:white; font-weight:bold;margin-top:10px" name="send_order"
@@ -37,21 +37,9 @@
                 </div>
             </div>
             <div class="review-payment">
-                <h2>Xem lại giỏ hàng</h2>
+                <h2><a href="{{ URL::to('/show-cart') }}">XEM LẠI GIỎ HÀNG</a></h2>
             </div>
 
-
-            <div class="payment-options">
-                <span>
-                    <label><input type="checkbox"> Direct Bank Transfer</label>
-                </span>
-                <span>
-                    <label><input type="checkbox"> Check Payment</label>
-                </span>
-                <span>
-                    <label><input type="checkbox"> Paypal</label>
-                </span>
-            </div>
         </div>
     </section>
     <!--/#cart_items-->

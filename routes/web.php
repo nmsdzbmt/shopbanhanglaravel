@@ -58,6 +58,8 @@ Route::get('/delete-product/{product_id}', 'ProductController@delete_product');
 Route::get('/unactive-product/{product_id}', 'ProductController@unactive_product');
 Route::get('/active-product/{product_id}', 'ProductController@active_product');
 
+Route::post('/search-product', 'ProductController@search_product');
+
 // Cart
 Route::post('/save-cart', 'CartController@save_cart');//add cart
 Route::post('/update-cart-quantity', 'CartController@update_cart_quantity');//update quantity
@@ -71,3 +73,5 @@ Route::post('/add-customer', 'CheckoutController@add_customer');//add customer
 Route::get('/checkout', 'CheckoutController@checkout');
 Route::post('/save-checkout-customer', 'CheckoutController@save_checkout_customer');
 Route::get('/logout-checkout', 'CheckoutController@logout_checkout');
+Route::get('/payment', 'CheckoutController@payment');
+Route::post('/order-place', 'CheckoutController@order_place');
