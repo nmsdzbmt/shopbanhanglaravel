@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Redirect;
 session_start();
 class CheckoutController extends Controller
 {
+    public function AuthLogin(){
+        $admin_id = Session::get('admin_id');
+        if($admin_id){
+            return Redirect::to('dashboard');
+        }else{
+            return Redirect::to('admin')->send();
+        }
+    }
+    
     public function login_checkout(){
         $category_product = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id', 'desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderby('brand_id', 'desc')->get();
@@ -111,12 +120,39 @@ class CheckoutController extends Controller
             DB::table('tbl_order_details')->insert($order_d);
         }
         if($payment_data['payment_method']==1){
-            echo 'Trả bằng thẻ ATM';
+            echo 'Trả bằng thẻ ATM. Chức năng đang update';
         }else{
             Cart::destroy();
             return view('pages.checkout.handcash')->with('category',$category_product)->with('brand',$brand_product);
-        }
+        }    
+    }
 
-         
+//Show don hang
+    public function manage_order(){
+        $this->AuthLogin();
+        $all_order = DB::table('tbl_order')
+            ->join('tbl_customer', 'tbl_order.customer_id', '=', 'tbl_customer.customer_id')
+            ->select('tbl_order.*', 'tbl_customer.customer_name')
+            ->orderby('tbl_order.order_id', 'desc')->get();
+        $manager_order = view('admin.manage_order')->with('all_order', $all_order);
+        return view('admin_layout')->with('admin.manage_order', $manager_order);
+    }
+//view chi tiet don hang
+    public function view_order($orderId){
+        $this->AuthLogin();
+        $all_order_by_id = DB::table('tbl_order')
+            ->join('tbl_customer', 'tbl_order.customer_id', '=', 'tbl_customer.customer_id')
+            ->join('tbl_shipping', 'tbl_order.shipping_id', '=', 'tbl_shipping.shipping_id')
+            ->join('tbl_order_details', 'tbl_order.order_id', '=', 'tbl_order_details.order_id')
+            ->select('tbl_order.*', 'tbl_customer.*', 'tbl_shipping.*', 'tbl_order_details.*')->first();
+        $manager_order_by_id = view('admin.view_order')->with('all_order_by_id', $all_order_by_id);
+        return view('admin_layout')->with('admin.view_order', $manager_order_by_id);
+    }
+//Delete don hang
+    public function delete_order($orderId){
+        $this->AuthLogin();
+        DB::table('tbl_order')->where('order_id', $order_id)->delete();
+        Session::put('message', 'Xóa sản phẩm thành công');
+        return Redirect::to('all-order');
     }
 }
