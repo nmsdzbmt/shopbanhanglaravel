@@ -85,7 +85,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Tổng quan</span>
                     </a>
                 </li>
-                
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Đơn hàng</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('/manage-order')}}">Quản lý đơn hàng</a></li>
+                    </ul>
+                </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
@@ -130,7 +138,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  {{-- <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p> --}}
 			</div>
 		  </div>
   <!-- / footer -->

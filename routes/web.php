@@ -75,3 +75,9 @@ Route::post('/save-checkout-customer', 'CheckoutController@save_checkout_custome
 Route::get('/logout-checkout', 'CheckoutController@logout_checkout');
 Route::get('/payment', 'CheckoutController@payment');
 Route::post('/order-place', 'CheckoutController@order_place');
+
+
+//manage order
+Route::get('/manage-order', 'CheckoutController@manage_order');
+Route::get('/view-order/{orderId}', 'CheckoutController@view_order');
+Route::get('/delete-order/{orderId}', 'CheckoutController@delete_order');
