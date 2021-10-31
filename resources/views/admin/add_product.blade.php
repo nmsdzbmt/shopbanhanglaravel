@@ -21,7 +21,7 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label >Tên sản phẩm</label>
-                                <input type="text" class="form-control" name="product_name"
+                                <input type="text" data-validation="length" data-validation-length="min3" data-validation-error-msg="Tên sản phẩm không phù hợp" class="form-control" name="product_name"
                                     id="exampleInputEmail1" required="" >
                             </div>
                             <div class="form-group">
@@ -36,14 +36,14 @@
                             </div>
                             <div class="form-group">
                                 <label >Mô tả sản phẩm</label>
-                                <textarea style="resize: none" rows="5" class="form-control col-lg-12"
+                                <textarea style="resize: none" id="ckeditor" rows="5" class="form-control col-lg-12"
                                     name="product_decs" required=""></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label >Nội dung sản phẩm</label>
                                 <textarea style="resize: none" rows="5" class="form-control col-lg-12"
-                                    name="product_content" required=""></textarea>
+                                    name="product_content" id="ckeditor1" required=""></textarea>
                             </div>
                            
                             <div class="form-group">
