@@ -19,12 +19,12 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label >Tên danh mục</label>
-                                <input type="text" class="form-control" name="category_product_name"
+                                <input type="text" data-validation="length" data-validation-length="min3" data-validation-error-msg="Tên danh mục không phù hợp" class="form-control" name="category_product_name"
                                     id="exampleInputEmail1" required="" >
                             </div>
                             <div class="form-group">
                                 <label >Mô tả danh mục</label>
-                                <textarea style="resize: none" rows="5" class="form-control col-lg-12"
+                                <textarea style="resize: none" id="ckeditor" rows="5" class="form-control col-lg-12"
                                     name="category_product_decs" required=""></textarea>
                             </div>
                             <div class="form-group">
